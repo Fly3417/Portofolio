@@ -1,0 +1,20 @@
+# backup files
+*.bak
+*.bak.*
+
+# node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# env
+.env
+.env.*

@@ -1,0 +1,43 @@
+{
+  "name": "sevenbyte-portfolio",
+  "version": "3.0.0",
+  "description": "SevenByte portfolio — security toolbox developer, Node.js, Termux-friendly, Red + Purple, zero dependency.",
+  "main": "server.js",
+  "type": "commonjs",
+  "private": true,
+  "license": "MIT",
+  "author": "SevenByte <sevenbyte7@proton.me> (https://github.com/Fly3417)",
+  "homepage": "https://Fly3417.github.io/Portofolio/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fly3417/Portofolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Fly3417/Portofolio/issues"
+  },
+  "keywords": [
+    "portfolio",
+    "cybersecurity",
+    "security-tooling",
+    "nodejs",
+    "termux",
+    "red-team",
+    "purple-team",
+    "malware-analysis",
+    "pwa",
+    "zero-dependency"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node server.js 8080",
+    "dev": "node server.js 3000",
+    "serve": "node server.js",
+    "check": "node -c server.js && node -c sw.js && node -c app.js && node -e \"JSON.parse(require('fs').readFileSync('manifest.json','utf8'));JSON.parse(require('fs').readFileSync('package.json','utf8'));console.log('all files OK')\"",
+    "backup": "for f in index.html style.css app.js server.js sw.js manifest.json package.json; do [ -f \"$f\" ] && cp \"$f\" \"$f.bak.$(date +%s)\"; done; echo 'backup done'",
+    "clean-bak": "rm -f *.bak.*"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
