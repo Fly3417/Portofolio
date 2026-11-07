@@ -302,7 +302,10 @@ section { padding: 50px 0; border-top: 1px solid var(--border); }
   gap: 14px;
 }
 @media (min-width: 680px) {
-  .projects-grid { grid-template-columns: 1fr 1fr; }
+  .projects-grid { 
+    display: flex;
+    justify-content: center;
+  }
 }
 .project {
   background: var(--bg-card);
@@ -313,6 +316,8 @@ section { padding: 50px 0; border-top: 1px solid var(--border); }
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  width: 100%;
+  max-width: 600px;
 }
 .project::after {
   content: '';
