@@ -162,11 +162,15 @@
       <h3>// reach out</h3>
       <p>Terbuka untuk kolaborasi, kontribusi open source, atau diskusi teknis. Kirim pesan langsung melalui form di bawah ini:</p>
       
-      <!-- FORMSPREE TERPASANG -->
-      <form action="https://formspree.io/f/mgaabkzz" method="POST" class="contact-form">
-        <input type="email" name="email" placeholder="Email kamu" required>
-        <textarea name="message" rows="4" placeholder="Pesan kamu..." required></textarea>
-        <button type="submit">Kirim Pesan</button>
+     
+      <form action="https://formspree.io/f/mgaabkzz" method="POST" style="display: flex; flex-direction: column; gap: 12px; margin-top: 16px;">
+        
+        <input type="email" name="email" placeholder="Email kamu" required style="width: 100%; padding: 12px; background: #0a0e14; border: 1px solid #1f2937; border-radius: 6px; color: #d4d9e0; font-family: monospace; font-size: 13px; outline: none;">
+        
+        <textarea name="message" rows="4" placeholder="Pesan kamu..." required style="width: 100%; padding: 12px; background: #0a0e14; border: 1px solid #1f2937; border-radius: 6px; color: #d4d9e0; font-family: monospace; font-size: 13px; resize: vertical; outline: none;"></textarea>
+        
+        <button type="submit" style="padding: 12px; background: #00ff9c; color: #0a0e14; border: none; border-radius: 6px; font-family: monospace; font-weight: bold; font-size: 14px; cursor: pointer;">Kirim Pesan</button>
+      
       </form>
 
       <div class="contact-links" style="margin-top: 20px;">
