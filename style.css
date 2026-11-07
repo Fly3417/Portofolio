@@ -137,21 +137,6 @@ nav ul li a:hover { color: var(--accent); }
   max-width: 640px;
   margin-bottom: 22px;
 }
-.hero .tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 18px;
-}
-.tag {
-  padding: 4px 10px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  font-size: 11px;
-  color: var(--fg-dim);
-  background: var(--bg-soft);
-}
-.tag.accent { border-color: var(--border-glow); color: var(--accent); }
 
 /* ===== HERO BUTTONS ===== */
 .hero-buttons {
@@ -185,6 +170,26 @@ nav ul li a:hover { color: var(--accent); }
   background: var(--accent);
   color: var(--bg);
   opacity: 1;
+}
+
+/* ===== TAGS ===== */
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.tag {
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 11px;
+  color: var(--fg-dim);
+  background: var(--bg-soft);
+}
+.tag.accent { 
+  border-color: var(--accent-dim); 
+  color: var(--accent); 
 }
 
 /* ===== SECTION ===== */
