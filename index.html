@@ -70,15 +70,31 @@
   .btn-primary { padding: 10px 20px; background: var(--accent); color: var(--bg); font-weight: bold; border-radius: 5px; border: 1px solid var(--accent); }
   .btn-secondary { padding: 10px 20px; border: 1px solid var(--accent); border-radius: 5px; color: var(--accent); }
 
-  /* TAGS (SEMUA HIJAU SEKARANG) */
+  /* TAGS (VARIASI WARNA) */
   .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  
+  /* Tag Default (Abu-abu gelap) */
   .tag { 
     padding: 4px 12px; 
-    border: 1px solid var(--accent); 
+    border: 1px solid var(--border); 
     border-radius: 4px; 
     font-size: 11px; 
+    color: var(--fg-dim); 
+    background: var(--bg-soft); 
+  }
+  
+  /* Tag Highlight (Hijau) - Untuk Cybersecurity & Tooling */
+  .tag.accent { 
+    border-color: var(--accent); 
     color: var(--accent); 
-    background: rgba(0, 255, 156, 0.1); /* Latar hijau transparan */
+    background: rgba(0, 255, 156, 0.08); /* Latar hijau sangat tipis */
+  }
+
+  /* Tag Putih - Untuk Node.js agar menonjol sedikit tapi tidak hijau */
+  .tag.white {
+    border-color: #a1a1aa;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
   }
 
   /* SECTION */
@@ -119,13 +135,13 @@
   .term-input-row { display: flex; border-top: 1px solid var(--border); background: #0a0e14; padding: 10px 14px; }
   .term-input-row input { flex: 1; background: transparent; border: none; color: var(--fg); outline: none; font-family: var(--font-mono); }
 
-  /* FORM KONTAK (DIPAKSA GELAP) */
+  /* FORM KONTAK (GELAP) */
   .contact-form { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
   .contact-form input, .contact-form textarea {
     width: 100%; padding: 12px; 
-    background: var(--bg) !important; /* Paksa gelap */
+    background: var(--bg) !important;
     border: 1px solid var(--border); border-radius: 6px; 
-    color: var(--fg) !important; /* Paksa teks terang */
+    color: var(--fg) !important;
     font-family: var(--font-mono); font-size: 12px;
   }
   .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); outline: none; }
@@ -171,11 +187,11 @@
       <a href="cv.pdf" download class="btn-secondary">Download CV</a>
     </div>
 
-    <!-- SEMUA TAG HIJAU -->
+    <!-- VARIASI TAG: HIJAU, PUTIH, DAN ABU-ABU -->
     <div class="hero-tags">
-      <span class="tag">Cybersecurity</span>
-      <span class="tag">Tooling</span>
-      <span class="tag">Node.js</span>
+      <span class="tag accent">Cybersecurity</span>
+      <span class="tag accent">Tooling</span>
+      <span class="tag white">Node.js</span>
       <span class="tag">Termux</span>
       <span class="tag">Red Team / Grey Hat</span>
       <span class="tag">Open Source</span>
@@ -271,7 +287,6 @@
       <h3>// reach out</h3>
       <p>Terbuka untuk kolaborasi, kontribusi open source, atau diskusi teknis. Kirim pesan langsung melalui form di bawah ini:</p>
       
-      <!-- FORM SUDAH GELAP -->
       <form action="https://formspree.io/f/mgaabkzz" method="POST" class="contact-form">
         <input type="email" name="email" placeholder="Email kamu" required>
         <textarea name="message" rows="4" placeholder="Pesan kamu..." required></textarea>
