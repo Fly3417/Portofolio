@@ -1,12 +1,4 @@
-/* ============================================================
-   SevenByte Portfolio — app.js
-   v3.1: Soft Navy Blue (#5b8def) | Red + Purple
-   ============================================================ */
-
-/* ===== YEAR ===== */
-(function(){
-  const y = document.getElementById('year');
-  if (y) y.textContent = new Date().getFullYear();
+Year();
 })();
 
 /* ===== REVEAL ON SCROLL ===== */
@@ -54,7 +46,7 @@
   onScroll();
 })();
 
-/* ===== MATRIX CANVAS (biru soft) ===== */
+/* ===== MATRIX CANVAS ===== */
 (function(){
   const c = document.createElement('canvas');
   c.id = 'matrix-bg';
@@ -136,55 +128,42 @@
       print('  whoami     — identitas', 'dim');
       print('  skills     — stack & keahlian', 'dim');
       print('  projects   — daftar project', 'dim');
-      print('  ops        — orientasi team (red/purple)', 'dim');
       print('  contact    — link kontak', 'dim');
-      print('  theme      — ganti tema biru/hijau', 'dim');
       print('  clear      — bersihkan layar', 'dim');
-      print('  banner     — tampilkan banner', 'dim');
     },
     whoami: () => {
       print('SevenByte', 'ok');
-      print('role    : Solo Developer / Founder', 'dim');
+      print('role    : Solo Developer / Security Researcher', 'dim');
       print('focus   : Security Toolbox, Red + Purple', 'dim');
-      print('env     : Termux / Linux', 'dim');
     },
     skills: () => {
       print('Node.js · Bash · Vanilla JS · AES-256-GCM · PBKDF2', 'ok');
       print('CLI design · Web UI mobile-first · Recon · Obfuscation', 'dim');
     },
     projects: () => {
+      print('7Pwn Framework  [live]', 'ok');
       print('enc-vault-cli   [live]', 'ok');
       print('recon-flow      [live]', 'ok');
-      print('obf-kit         [wip]', 'dim');
-      print('purple-lab      [wip]', 'dim');
-      print('— scroll ke #projects buat detail', 'dim');
-    },
-    ops: () => {
-      print('Red Team    : recon, exploitation, payload, evasion', 'ok');
-      print('Purple Team : malware analysis, RE, TI, detection, attack sim', 'ok');
     },
     contact: () => {
       print('github  : https://github.com/Fly3417', 'ok');
-      print('email   : sevenbyte7@proton.me', 'ok');
+      print('email   : sevenbyte071@gmail.com', 'ok');
       print('telegram: https://t.me/Sevenbyte7', 'ok');
     },
-    theme: () => {
-      const cur = document.body.classList.contains('theme-green') ? 'green' : 'blue';
-      const next = cur === 'blue' ? 'green' : 'blue';
-      document.body.classList.remove('theme-blue', 'theme-green');
-      document.body.classList.add('theme-' + next);
-      localStorage.setItem('sb-theme', next);
-      const btn = document.getElementById('theme-toggle');
-      if (btn) btn.textContent = next === 'blue' ? '◐' : '◑';
-      print('theme: ' + next, 'ok');
-    },
     clear: () => { body.innerHTML = ''; },
-    banner: () => {
-      printHTML('<span class="ok">╔═╗╔═╗╦  ╦╔═╗╔╗╔╔╗ ╦ ╦╔╦╗╔═╗</span>');
-      printHTML('<span class="ok">╚═╗║╣ ╚╗╔╝║╣ ║║║╠╩╗╚╦╝ ║ ║╣ </span>');
-      printHTML('<span class="ok">╚═╝╚═╝ ╚╝ ╚═╝╝╚╝╚═╝ ╩  ╩ ╚═╝</span>');
-      print('security toolbox developer', 'dim');
+    
+    // --- EASTER EGGS ---
+    hack: () => {
+      print('Initializing exploit framework...', 'dim');
+      setTimeout(() => print('Bypassing firewall [██████████] 100%', 'ok'), 500);
+      setTimeout(() => print('Access Granted. Welcome, Operator.', 'err'), 1200);
     },
+    sudo: () => {
+      print('sevenbyte is not in the sudoers file. This incident will be reported.', 'err');
+    },
+    rm: () => {
+      print('Nice try. But you cannot delete my portfolio. 😉', 'ok');
+    }
   };
 
   const run = (raw) => {
@@ -199,8 +178,13 @@
     );
 
     const name = cmd.split(/\s+/)[0].toLowerCase();
-    if (cmds[name]) {
-      cmds[name]();
+    
+    if (name === 'sudo') {
+        cmds.sudo();
+    } else if (name === 'rm') {
+        cmds.rm();
+    } else if (cmds[name]) {
+        cmds[name]();
     } else {
       print('command not found: ' + name, 'err');
       print('ketik "help" untuk lihat command.', 'dim');
@@ -223,27 +207,6 @@
 
   const termEl = document.querySelector('.term');
   if (termEl) termEl.addEventListener('click', () => input.focus());
-})();
-
-/* ===== THEME TOGGLE BUTTON ===== */
-(function(){
-  const saved = localStorage.getItem('sb-theme') || 'blue';
-  document.body.classList.remove('theme-blue', 'theme-green');
-  document.body.classList.add('theme-' + saved);
-
-  const btn = document.createElement('button');
-  btn.id = 'theme-toggle';
-  btn.textContent = saved === 'blue' ? '◐' : '◑';
-  btn.title = 'Ganti tema (biru / hijau)';
-  btn.setAttribute('aria-label', 'Toggle theme');
-  btn.addEventListener('click', () => {
-    const now = document.body.classList.contains('theme-blue') ? 'green' : 'blue';
-    document.body.classList.remove('theme-blue', 'theme-green');
-    document.body.classList.add('theme-' + now);
-    localStorage.setItem('sb-theme', now);
-    btn.textContent = now === 'blue' ? '◐' : '◑';
-  });
-  document.body.appendChild(btn);
 })();
 
 /* ===== PWA REGISTER ===== */
