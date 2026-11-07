@@ -16,10 +16,8 @@
   <ul>
     <li><a href="#about">about</a></li>
     <li><a href="#skills">skills</a></li>
-    <li><a href="#ops">ops</a></li>
     <li><a href="#projects">projects</a></li>
     <li><a href="#terminal">shell</a></li>
-    <li><a href="#roadmap">roadmap</a></li>
     <li><a href="#contact">contact</a></li>
     <li><a href="https://t.me/Sevenbyte7" target="_blank" rel="noopener">tg</a></li>
   </ul>
@@ -30,12 +28,18 @@
   <!-- HERO -->
   <header class="hero">
     <div class="prompt">whoami</div>
-    <h1>Solo Developer<span class="cursor"></span></h1>
+    <h1>Solo Developer & Security Researcher<span class="cursor"></span></h1>
     <p class="sub">
-      Building security tooling &amp; automation with Node.js.<br>
-      Termux-friendly. No framework. No heavy deps. Just raw CLI &amp; web.
+      Specializing in <b>Node.js security tooling</b> and offensive automation.<br>
+      Building lightweight, zero-dependency tools for Red &amp; Purple Teams in Termux.
     </p>
-    <div class="tags">
+    
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary">Hubungi Saya</a>
+      <a href="cv.pdf" download class="btn-secondary">Download CV</a>
+    </div>
+
+    <div class="tags" style="margin-top: 24px;">
       <span class="tag accent">Cybersecurity</span>
       <span class="tag accent">Tooling</span>
       <span class="tag">Node.js</span>
@@ -56,11 +60,11 @@
           khususnya pengembangan tooling dan automation berbasis Node.js.
         </p>
         <p>
-          Suka bikin tools yang jalan di environment minim (Termux/Android),
-          tanpa dependency berat, dan bisa dipakai langsung dari CLI maupun browser.
+          Berpengalaman membangun <i>tools</i> yang berjalan di environment minim (Termux/Android), 
+          tanpa dependency berat, dan dapat dioperasikan langsung dari CLI maupun Web.
         </p>
         <p>
-          Pendekatan kerja: <em>step-by-step, satu file per patch, backup dulu sebelum ngubah apa pun.</em>
+          Pendekatan kerja: <em>step-by-step, modular, dan selalu utamakan keamanan (OpSec).</em>
         </p>
       </div>
       <div class="card">
@@ -78,16 +82,14 @@
   <section id="skills" class="reveal">
     <div class="sec-head"><span class="num">02</span><h2>Stack &amp; Keahlian</h2></div>
     <div class="skills-grid">
-
       <div class="skill-block">
         <h4>Backend &amp; Runtime</h4>
         <ul>
           <li>Node.js (v18+) — HTTP native, WebSocket</li>
-          <li>CLI application design — menu interaktif, progress bar, log tree</li>
+          <li>CLI application design — menu interaktif</li>
           <li>Bash scripting &amp; process spawn</li>
         </ul>
       </div>
-
       <div class="skill-block">
         <h4>Frontend</h4>
         <ul>
@@ -96,16 +98,14 @@
           <li>No framework — zero dependency</li>
         </ul>
       </div>
-
       <div class="skill-block">
         <h4>Security Tooling</h4>
         <ul>
           <li>AES-256-GCM, PBKDF2, hashing</li>
-          <li>Obfuscation (javascript-obfuscator, webcrack)</li>
+          <li>Obfuscation (javascript-obfuscator)</li>
           <li>Recon, port scanning, offensive tooling</li>
         </ul>
       </div>
-
       <div class="skill-block">
         <h4>Networking &amp; Env</h4>
         <ul>
@@ -114,46 +114,25 @@
           <li>Git — append-only workflow, backup-first</li>
         </ul>
       </div>
-
-    </div>
-  </section>
-
-  <!-- OPS -->
-  <section id="ops" class="reveal">
-    <div class="sec-head"><span class="num">03</span><h2>Orientasi Medan Tempur</h2></div>
-    <div class="team-row team-row-2">
-
-      <div class="team-card red">
-        <h4>Red Team</h4>
-        <ul>
-          <li>Recon &amp; OSINT</li>
-          <li>Exploitation (CVE, Web, Android)</li>
-          <li>Post-Exploitation (C2, Persistence, PrivEsc)</li>
-          <li>Payload Development (Bind, Fileless, Polymorphic)</li>
-          <li>Social Engineering (Phishing, Fake Notif, OTP)</li>
-          <li>Evasion (Anti-Debug, Anti-Emulator, Obfuscation)</li>
-        </ul>
-      </div>
-
-      <div class="team-card purple">
-        <h4>Purple Team</h4>
-        <ul>
-          <li>Malware Analysis &amp; Research</li>
-          <li>Reverse Engineering (static &amp; dynamic)</li>
-          <li>Threat Intelligence (IOC, TTP, feed)</li>
-          <li>Detection Engineering (rule, log, anomaly)</li>
-          <li>Automated Attack Simulation (Auto-Pilot, AI C2)</li>
-          <li>Infrastructure Automation (VPS, Cloudflare, Firebase)</li>
-        </ul>
-      </div>
-
     </div>
   </section>
 
   <!-- PROJECTS -->
   <section id="projects" class="reveal">
-    <div class="sec-head"><span class="num">04</span><h2>Projects</h2></div>
+    <div class="sec-head"><span class="num">03</span><h2>Projects</h2></div>
     <div class="projects-grid">
+
+      <div class="project">
+        <div class="p-head">
+          <div class="p-name">7Pwn Framework</div>
+          <div class="p-status live">● live</div>
+        </div>
+        <p class="p-desc">Automated Penetration Testing Framework built for Termux. Features Mass Dorking & Auto-Exploit.</p>
+        <div class="p-stack">
+          <span>Node.js</span><span>SQLi</span><span>RCE</span>
+        </div>
+        <a class="p-link" href="https://github.com/Fly3417/7Pwn" target="_blank" rel="noopener">→ view repo</a>
+      </div>
 
       <div class="project">
         <div class="p-head">
@@ -164,7 +143,7 @@
         <div class="p-stack">
           <span>Node.js</span><span>AES-256-GCM</span><span>PBKDF2</span>
         </div>
-        <a class="p-link" href="#" target="_blank" rel="noopener">→ view repo</a>
+        <a class="p-link" href="https://github.com/Fly3417" target="_blank" rel="noopener">→ view repo</a>
       </div>
 
       <div class="project">
@@ -176,19 +155,7 @@
         <div class="p-stack">
           <span>Node.js</span><span>TCP</span><span>Recon</span>
         </div>
-        <a class="p-link" href="#" target="_blank" rel="noopener">→ view repo</a>
-      </div>
-
-      <div class="project">
-        <div class="p-head">
-          <div class="p-name">obf-kit</div>
-          <div class="p-status wip">◐ wip</div>
-        </div>
-        <p class="p-desc">Wrapper javascript-obfuscator + webcrack buat pipeline obfuscate/deobfuscate JS di Termux.</p>
-        <div class="p-stack">
-          <span>Node.js</span><span>Obfuscation</span><span>CLI</span>
-        </div>
-        <a class="p-link" href="#" target="_blank" rel="noopener">→ view repo</a>
+        <a class="p-link" href="https://github.com/Fly3417" target="_blank" rel="noopener">→ view repo</a>
       </div>
 
       <div class="project">
@@ -200,25 +167,22 @@
         <div class="p-stack">
           <span>Node.js</span><span>Detection</span><span>Malware</span>
         </div>
-        <a class="p-link" href="#" target="_blank" rel="noopener">→ view repo</a>
+        <a class="p-link" href="#" style="color: var(--fg-dim); cursor: not-allowed;">[Coming Soon]</a>
       </div>
 
     </div>
-    <p style="margin-top:14px; color:var(--fg-dim); font-size:11px;">
-      // ganti href &amp; isi project sesuai repo lo
-    </p>
   </section>
 
   <!-- TERMINAL -->
   <section id="terminal" class="reveal">
-    <div class="sec-head"><span class="num">05</span><h2>Interactive Shell<span class="v2-badge">v2</span></h2></div>
+    <div class="sec-head"><span class="num">04</span><h2>Interactive Shell<span class="v2-badge">v2</span></h2></div>
     <div class="term">
       <div class="term-bar">
         <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
         <span class="title">sevenbyte@termux:~</span>
       </div>
       <div class="term-body" id="termBody">
-        <div class="line dim">SevenByte shell v1.0 — ketik <span class="ok">help</span> untuk lihat command.</div>
+        <div class="line dim">SevenByte shell v2.0 — ketik <span class="ok">help</span> untuk melihat perintah.</div>
       </div>
       <div class="term-input-row">
         <span class="ps1">$</span>
@@ -227,59 +191,30 @@
     </div>
   </section>
 
-  <!-- ROADMAP -->
-  <section id="roadmap" class="reveal">
-    <div class="sec-head"><span class="num">06</span><h2>Roadmap</h2></div>
-    <div class="roadmap">
-
-      <div class="step">
-        <div class="idx">01</div>
-        <div class="body">
-          <h4>Security Toolbox Developer</h4>
-          <p>Dikenal di komunitas Open Source lewat tools yang solid &amp; ringan.</p>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="idx">02</div>
-        <div class="body">
-          <h4>Bug Bounty / Red Team</h4>
-          <p>Masuk ke dunia offensive security secara profesional.</p>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="idx">03</div>
-        <div class="body">
-          <h4>Kontribusi Komunitas Termux</h4>
-          <p>Bawa tooling Android security ke level berikutnya.</p>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="idx">04</div>
-        <div class="body">
-          <h4>Portofolio Solid di GitHub</h4>
-          <p>Bangun jejak karya yang konsisten &amp; bisa diverifikasi.</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
   <!-- CONTACT -->
   <section id="contact" class="reveal">
-    <div class="sec-head"><span class="num">07</span><h2>Kontak</h2></div>
+    <div class="sec-head"><span class="num">05</span><h2>Kontak</h2></div>
     <div class="card">
       <h3>// reach out</h3>
-      <p>Terbuka untuk kolaborasi, kontribusi open source, atau diskusi teknis.</p>
-      <div class="contact-links">
+      <p>Terbuka untuk kolaborasi, kontribusi open source, atau diskusi teknis. Kirim pesan langsung melalui form di bawah ini:</p>
+      
+      
+      <form action="https://formspree.io/f/mgaabkzz" method="POST" class="contact-form">
+        <input type="email" name="email" placeholder="Email kamu" required>
+        <textarea name="message" rows="4" placeholder="Pesan kamu..." required></textarea>
+        <button type="submit">Kirim Pesan</button>
+      </form>
+
+      <div class="contact-links" style="margin-top: 20px;">
         <a href="https://github.com/Fly3417" target="_blank" rel="noopener">◉ GitHub</a>
-        <a href="mailto:sevenbyte7@proton.me">✉ Email</a>
+        <a href="mailto:sevenbyte071@gmail.com">✉ Email</a>
         <a href="https://t.me/Sevenbyte7" target="_blank" rel="noopener">✈ Telegram</a>
       </div>
+<<<<<<< HEAD
+=======
       <p style="margin-top:16px; color:var(--fg-dim); font-size:11px;">
       </p>
+>>>>>>> a263876fd134473a836693086df6c32c1cae928d
     </div>
   </section>
 
