@@ -24,19 +24,9 @@ body {
   font-size: 14px;
   overflow-x: hidden;
   min-height: 100vh;
+  position: relative;
 }
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 40px 40px;
-  opacity: 0.15;
-  z-index: -1;
-  pointer-events: none;
-}
+
 a { color: var(--accent); text-decoration: none; transition: opacity .2s; }
 a:hover { opacity: 0.75; }
 ::selection { background: var(--accent); color: var(--bg); }
@@ -88,6 +78,8 @@ nav ul li a:hover { color: var(--accent); }
   max-width: 960px;
   margin: 0 auto;
   padding: 0 18px;
+  position: relative;
+  z-index: 1;
 }
 
 /* ===== HERO ===== */
@@ -467,7 +459,7 @@ section { padding: 40px 0; border-top: 1px solid var(--border); }
 }
 .contact-form textarea {
   resize: vertical;
-  min-height: 60px;
+  min-height: 100px;
 }
 .contact-form button {
   padding: 12px;
@@ -517,6 +509,8 @@ footer {
   text-align: center;
   color: var(--fg-dim);
   font-size: 11px;
+  position: relative;
+  z-index: 1;
 }
 footer .glyph { color: var(--accent); }
 
