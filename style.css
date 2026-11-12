@@ -467,7 +467,7 @@ section { padding: 40px 0; border-top: 1px solid var(--border); }
 }
 .contact-form textarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: 60px;
 }
 .contact-form button {
   padding: 12px;
