@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(repos => {
         const filteredRepos = repos.filter(repo => {
           if (!repo.topics || repo.topics.length === 0) return false;
-          return repo.topics.includes('portfolio') || 
+          return repo.topics.includes('termux-tool') || 
                  repo.topics.includes('hacking-tools') || 
                  repo.topics.includes('cybersecurity');
         });
