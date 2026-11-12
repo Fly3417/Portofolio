@@ -41,10 +41,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const canvas = document.createElement('canvas');
   canvas.id = 'matrix-bg';
+  
+  // FIX: Bikin canvas jadi background diam, gak bikin halaman panjang
+  canvas.style.position = 'fixed';
+  canvas.style.top = '0';
+  canvas.style.left = '0';
+  canvas.style.width = '100vw';
+  canvas.style.height = '100vh';
+  canvas.style.zIndex = '-1';
+  canvas.style.pointerEvents = 'none';
+  
   document.body.appendChild(canvas);
   const ctx = canvas.getContext('2d');
   const chars = 'アカサタナハマヤラワ0123456789ABCDEFabcdef<>{}[]()/*'.split('');
   let cols, drops;
+  
   const resize = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -53,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   resize();
   window.addEventListener('resize', resize);
+  
   let lastTime = 0;
   const draw = (t) => {
     if (t - lastTime > 55) {
