@@ -96,11 +96,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (repoName === 'portofolio' || repoName === 'portfolio' || repoName === 'fly3417.github.io') return false;
       if (topics.includes('portfolio')) return false;
 
-      return topics.includes('hacking-tools') || 
-             topics.includes('cybersecurity') ||
-             topics.includes('termux') ||
-             topics.includes('pentesting') ||
-             topics.includes('web-security');
+      const isCyber = topics.some(t => t.includes('security') || t.includes('cyber') || t.includes('pentest') || t.includes('hacking') || t.includes('bugbounty') || t.includes('bug-bounty'));
+      const isTermux = topics.some(t => t.includes('termux'));
+
+      return isCyber || isTermux;
     });
   }
 
@@ -110,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     getValidRepos().then(filteredRepos => {
       if (filteredRepos.length === 0) {
-        projectsContainer.innerHTML = '<div style="color: var(--fg-dim); grid-column: 1 / -1; text-align: center;">Belum ada project yang ditampilkan.<br><small>Tambahkan Topics "hacking-tools" atau "cybersecurity" di repo GitHub kamu.</small></div>';
+        projectsContainer.innerHTML = '<div style="color: var(--fg-dim); grid-column: 1 / -1; text-align: center;">Belum ada project yang ditampilkan.</div>';
         return;
       }
 
