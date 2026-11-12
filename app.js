@@ -95,16 +95,28 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .then(repos => {
         const filteredRepos = repos.filter(repo => {
-          if (!repo.topics || repo.topics.length === 0) return false;
-          return repo.topics.includes('termux-tool') || 
-                 repo.topics.includes('hacking-tools') || 
-                 repo.topics.includes('cybersecurity');
+          const repoName = repo.name.toLowerCase();
+          const topics = repo.topics || [];
+
+          if (repoName === 'portofolio' || repoName === 'portfolio' || repoName === 'fly3417.github.io') {
+            return false;
+          }
+
+          if (topics.includes('portfolio')) {
+            return false;
+          }
+
+          return topics.includes('hacking-tools') || 
+                 topics.includes('cybersecurity') ||
+                 topics.includes('termux') ||
+                 topics.includes('pentesting') ||
+                 topics.includes('web-security');
         });
 
         filteredRepos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
 
         if (filteredRepos.length === 0) {
-          projectsContainer.innerHTML = '<div style="color: var(--fg-dim); grid-column: 1 / -1; text-align: center;">Belum ada project yang ditampilkan.</div>';
+          projectsContainer.innerHTML = '<div style="color: var(--fg-dim); grid-column: 1 / -1; text-align: center;">Belum ada project yang ditampilkan.<br><small>Tambahkan Topics "hacking-tools" atau "cybersecurity" di repo GitHub kamu.</small></div>';
           return;
         }
 
@@ -213,8 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hIdx = history.length;
 
       printHTML(
-        '<span class="prompt-line"><span class="user">sevenbyte</span>:' +
-        '<span class="path">~</span>$ ' + escapeHtml(cmd) + '</span>'
+        '<span class="prompt-line"><span class="user">sevenbyte</span>:<span class="path">~</span>$ ' + escapeHtml(cmd) + '</span>'
       );
 
       const name = cmd.split(/\s+/)[0].toLowerCase();
