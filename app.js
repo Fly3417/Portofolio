@@ -83,71 +83,63 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   window.initProjectHover();
 
+  const GITHUB_USERNAME = 'Fly3417';
+  
+  async function getValidRepos() {
+    const res = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`);
+    const repos = await res.json();
+    
+    return repos.filter(repo => {
+      const repoName = repo.name.toLowerCase();
+      const topics = repo.topics || [];
+
+      if (repoName === 'portofolio' || repoName === 'portfolio' || repoName === 'fly3417.github.io') return false;
+      if (topics.includes('portfolio')) return false;
+
+      return topics.includes('hacking-tools') || 
+             topics.includes('cybersecurity') ||
+             topics.includes('termux') ||
+             topics.includes('pentesting') ||
+             topics.includes('web-security');
+    });
+  }
+
   const projectsContainer = document.querySelector('.projects-grid');
   if (projectsContainer) {
     projectsContainer.innerHTML = '<div style="color: var(--fg-dim); grid-column: 1 / -1; text-align: center;">Memuat project dari GitHub...</div>';
-    const GITHUB_USERNAME = 'Fly3417';
     
-    fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`)
-      .then(response => {
-        if (!response.ok) throw new Error('Gagal mengambil data dari GitHub');
-        return response.json();
-      })
-      .then(repos => {
-        const filteredRepos = repos.filter(repo => {
-          const repoName = repo.name.toLowerCase();
-          const topics = repo.topics || [];
+    getValidRepos().then(filteredRepos => {
+      if (filteredRepos.length === 0) {
+        projectsContainer.innerHTML = '<div style="color: var(--fg-dim); grid-column: 1 / -1; text-align: center;">Belum ada project yang ditampilkan.<br><small>Tambahkan Topics "hacking-tools" atau "cybersecurity" di repo GitHub kamu.</small></div>';
+        return;
+      }
 
-          if (repoName === 'portofolio' || repoName === 'portfolio' || repoName === 'fly3417.github.io') {
-            return false;
-          }
+      projectsContainer.innerHTML = filteredRepos.map(repo => {
+        const language = repo.language || 'Code';
+        const stackBadges = (repo.topics || []).slice(0, 3)
+          .map(topic => `<span>${topic}</span>`).join('');
 
-          if (topics.includes('portfolio')) {
-            return false;
-          }
-
-          return topics.includes('hacking-tools') || 
-                 topics.includes('cybersecurity') ||
-                 topics.includes('termux') ||
-                 topics.includes('pentesting') ||
-                 topics.includes('web-security');
-        });
-
-        filteredRepos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
-
-        if (filteredRepos.length === 0) {
-          projectsContainer.innerHTML = '<div style="color: var(--fg-dim); grid-column: 1 / -1; text-align: center;">Belum ada project yang ditampilkan.<br><small>Tambahkan Topics "hacking-tools" atau "cybersecurity" di repo GitHub kamu.</small></div>';
-          return;
-        }
-
-        projectsContainer.innerHTML = filteredRepos.map(repo => {
-          const language = repo.language || 'Code';
-          const stackBadges = (repo.topics || []).slice(0, 3)
-            .map(topic => `<span>${topic}</span>`).join('');
-
-          return `
-            <div class="project">
-              <div class="p-head">
-                <div class="p-name">${repo.name}</div>
-                <div class="p-status live">● live</div>
-              </div>
-              <p class="p-desc">${repo.description || 'Tidak ada deskripsi.'}</p>
-              <div class="p-stack">
-                <span>${language}</span>
-                <span>⭐ ${repo.stargazers_count}</span>
-                ${stackBadges}
-              </div>
-              <a href="${repo.html_url}" target="_blank" style="font-size:12px;">→ view repo</a>
+        return `
+          <div class="project">
+            <div class="p-head">
+              <div class="p-name">${repo.name}</div>
+              <div class="p-status live">● live</div>
             </div>
-          `;
-        }).join('');
+            <p class="p-desc">${repo.description || 'Tidak ada deskripsi.'}</p>
+            <div class="p-stack">
+              <span>${language}</span>
+              <span>⭐ ${repo.stargazers_count}</span>
+              ${stackBadges}
+            </div>
+            <a href="${repo.html_url}" target="_blank" style="font-size:12px;">→ view repo</a>
+          </div>
+        `;
+      }).join('');
 
-        if (window.initProjectHover) window.initProjectHover();
-      })
-      .catch(error => {
-        console.error(error);
-        projectsContainer.innerHTML = `<div style="color: #ff5f56; grid-column: 1 / -1; text-align: center;">Error: ${error.message}</div>`;
-      });
+      if (window.initProjectHover) window.initProjectHover();
+    }).catch(error => {
+      projectsContainer.innerHTML = `<div style="color: #ff5f56; grid-column: 1 / -1; text-align: center;">Error: ${error.message}</div>`;
+    });
   }
 
   const termBody = document.getElementById('termBody');
@@ -182,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
         print('available commands:', 'ok');
         print('  whoami     — identitas', 'dim');
         print('  skills     — stack & keahlian', 'dim');
-        print('  projects   — daftar project', 'dim');
+        print('  projects   — daftar project dari GitHub', 'dim');
         print('  contact    — link kontak', 'dim');
         print('  clear      — bersihkan layar', 'dim');
       },
@@ -195,9 +187,21 @@ document.addEventListener('DOMContentLoaded', () => {
         print('Node.js · Bash · Vanilla JS · AES-256-GCM · PBKDF2', 'ok');
         print('CLI design · Web UI mobile-first · Recon · Obfuscation', 'dim');
       },
-      projects: () => {
-        print('7Pwn Framework  [live]', 'ok');
-        print('USB RIG         [live]', 'ok');
+      projects: async () => {
+        print('Fetching projects from GitHub...', 'dim');
+        try {
+          const repos = await getValidRepos();
+          if (repos.length === 0) {
+            print('Tidak ada project dengan topics yang cocok.', 'err');
+          } else {
+            repos.forEach(repo => {
+              print(`${repo.name.padEnd(15)} [live]`, 'ok');
+              print(`└─ ${repo.description || 'No description'}`, 'dim');
+            });
+          }
+        } catch (e) {
+          print('Gagal load projects.', 'err');
+        }
       },
       contact: () => {
         print('github  : https://github.com/Fly3417', 'ok');
@@ -214,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
         print('sevenbyte is not in the sudoers file. This incident will be reported.', 'err');
       },
       rm: () => {
-        print('Nice try. But you cannot delete my portfolio. 😉', 'ok');
+        print('Nice try. But you cannot delete my portfolio.', 'ok');
       }
     };
 
