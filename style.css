@@ -149,17 +149,19 @@ nav ul li a:hover { color: var(--accent); }
 
 .btn-secondary {
   padding: 10px 20px;
-  background: var(--accent) !important;
-  color: var(--bg) !important;
+  background: transparent !important;
+  color: var(--accent) !important;
   font-weight: bold;
   border-radius: 5px;
   border: 1px solid var(--accent) !important;
   transition: all 0.3s ease;
-}
-.btn-secondary:hover {
-  background: transparent !important;
-  color: var(--accent) !important;
   box-shadow: none !important;
+}
+
+.btn-secondary:hover {
+  background: var(--accent) !important;
+  color: var(--bg) !important;
+  box-shadow: 0 0 15px var(--accent), 0 0 30px var(--accent-dim) !important;
   opacity: 1 !important;
   transform: translateY(-2px);
 }
