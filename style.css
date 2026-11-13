@@ -125,34 +125,41 @@ nav ul li a:hover { color: var(--accent); }
   margin-top: 24px;
   flex-wrap: wrap;
 }
+
+/* Tombol Hubungi Saya: Kosong -> Hijau Full */
 .btn-primary {
   padding: 10px 20px;
-  background: var(--accent);
-  color: var(--bg);
+  background: transparent !important;
+  color: var(--accent) !important;
   font-weight: bold;
   border-radius: 5px;
-  border: 1px solid var(--accent);
+  border: 1px solid var(--accent) !important;
   transition: all 0.3s ease;
-  box-shadow: 0 0 10px var(--accent-dim);
+}
+.btn-primary:hover {
+  background: var(--accent) !important;
+  color: var(--bg) !important;
+  box-shadow: 0 0 15px var(--accent), 0 0 30px var(--accent-dim) !important;
+  opacity: 1 !important;
+  transform: translateY(-2px);
 }
 
-.btn-primary:hover {
-  background: transparent;
-  color: var(--accent);
-  box-shadow: 0 0 15px var(--accent), inset 0 0 10px var(--accent-dim);
-  opacity: 1;
-}
+/* Tombol Download CV: Hijau Full -> Kosong */
 .btn-secondary {
   padding: 10px 20px;
-  border: 1px solid var(--accent);
+  background: var(--accent) !important;
+  color: var(--bg) !important;
+  font-weight: bold;
   border-radius: 5px;
-  color: var(--accent);
-  transition: all 0.2s;
+  border: 1px solid var(--accent) !important;
+  transition: all 0.3s ease;
 }
 .btn-secondary:hover {
-  background: var(--accent);
-  color: var(--bg);
-  opacity: 1;
+  background: transparent !important;
+  color: var(--accent) !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  transform: translateY(-2px);
 }
 
 /* ===== TAGS ===== */
