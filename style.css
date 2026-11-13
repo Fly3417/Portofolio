@@ -132,11 +132,14 @@ nav ul li a:hover { color: var(--accent); }
   font-weight: bold;
   border-radius: 5px;
   border: 1px solid var(--accent);
-  transition: all 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px var(--accent-dim);
 }
+
 .btn-primary:hover {
   background: transparent;
   color: var(--accent);
+  box-shadow: 0 0 15px var(--accent), inset 0 0 10px var(--accent-dim);
   opacity: 1;
 }
 .btn-secondary {
