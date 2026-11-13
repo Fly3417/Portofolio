@@ -32,6 +32,19 @@ a:hover { opacity: 0.75; }
 ::selection { background: var(--accent); color: var(--bg); }
 .glow { text-shadow: 0 0 8px var(--accent-dim); }
 
+/* ===== SCROLLBAR TOP ===== */
+#scrollbar-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--accent);
+  width: 0%;
+  z-index: 100;
+  box-shadow: 0 0 10px var(--accent);
+  transition: width 0.1s;
+}
+
 /* ===== NAV ===== */
 nav {
   position: sticky;
@@ -126,7 +139,6 @@ nav ul li a:hover { color: var(--accent); }
   flex-wrap: wrap;
 }
 
-
 .btn-primary {
   padding: 10px 20px;
   background: transparent !important;
@@ -145,7 +157,6 @@ nav ul li a:hover { color: var(--accent); }
   opacity: 1 !important;
   transform: translateY(-2px);
 }
-
 
 .btn-secondary {
   padding: 10px 20px;
