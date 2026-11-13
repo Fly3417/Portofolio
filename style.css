@@ -126,7 +126,7 @@ nav ul li a:hover { color: var(--accent); }
   flex-wrap: wrap;
 }
 
-/* Tombol Hubungi Saya: Kosong -> Hijau Full */
+
 .btn-primary {
   padding: 10px 20px;
   background: transparent !important;
@@ -135,7 +135,9 @@ nav ul li a:hover { color: var(--accent); }
   border-radius: 5px;
   border: 1px solid var(--accent) !important;
   transition: all 0.3s ease;
+  box-shadow: none !important;
 }
+
 .btn-primary:hover {
   background: var(--accent) !important;
   color: var(--bg) !important;
@@ -144,7 +146,7 @@ nav ul li a:hover { color: var(--accent); }
   transform: translateY(-2px);
 }
 
-/* Tombol Download CV: Hijau Full -> Kosong */
+
 .btn-secondary {
   padding: 10px 20px;
   background: var(--accent) !important;
